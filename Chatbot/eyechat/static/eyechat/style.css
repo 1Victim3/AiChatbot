@@ -1,0 +1,197 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff; /* White background */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    color: #333; /* Dark text */
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #007bff; /* Blue accent color */
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Chatbot Container */
+#chatbot {
+    width: 90%;
+    max-width: 1000px; /* Increased max-width for PC */
+    height: 80vh; /* Increased height for PC */
+    max-height: 800px; /* Increased max-height for PC */
+    background-color: #f9f9f9; /* Light gray container */
+    border-radius: 20px; /* Larger border radius */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    padding: 30px; /* Increased padding */
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Increased gap */
+}
+
+/* Bot Text Styling */
+.botText {
+    background-color: #007bff; /* Blue background for bot messages */
+    color: #ffffff; /* White text for bot messages */
+    padding: 15px 20px; /* Increased padding */
+    border-radius: 20px 20px 20px 5px; /* Larger border radius */
+    max-width: 75%;
+    align-self: flex-start; /* Align to the left */
+    font-size: 1.1rem; /* Slightly larger font */
+    line-height: 1.6;
+    animation: fadeIn 0.5s ease;
+}
+
+/* User Text Styling */
+.userText {
+    background-color: #e0e0e0; /* Light gray background for user messages */
+    color: #333; /* Dark text for user messages */
+    padding: 15px 20px; /* Increased padding */
+    border-radius: 20px 20px 5px 20px; /* Rounded corners on the right */
+    max-width: 75%;
+    align-self: flex-end; /* Align to the right */
+    font-size: 1.1rem; /* Slightly larger font */
+    line-height: 1.6;
+    animation: fadeIn 0.5s ease;
+    text-align: right
+}
+
+/* User Input Container */
+#userInput {
+    display: flex;
+    gap: 15px; /* Increased gap */
+    margin-top: 25px; /* Increased margin */
+    width: 90%;
+    max-width: 1000px; /* Matches chatbot width */
+}
+
+#textInput {
+    flex: 1;
+    padding: 15px 20px; /* Increased padding */
+    border: 2px solid #007bff; /* Blue border */
+    border-radius: 30px;
+    font-size: 1.1rem; /* Slightly larger font */
+    outline: none;
+    background-color: #ffffff; /* White background */
+    color: #333; /* Dark text */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#textInput:focus {
+    border-color: #0056b3; /* Darker blue on focus */
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.3); /* Glow effect */
+}
+
+#buttonInput {
+    background-color: #007bff; /* Blue background */
+    border: none;
+    border-radius: 50%;
+    width: 70px; /* Larger circle */
+    height: 70px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#buttonInput:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.1);
+}
+
+/* Button Icon (Arrow) */
+#buttonInput::after {
+    content: '➤';
+    color: #ffffff; /* White arrow */
+    font-size: 1.8rem; /* Larger icon */
+}
+
+/* Scrollbar Styling */
+#chatbot::-webkit-scrollbar {
+    width: 12px; /* Wider scrollbar */
+}
+
+#chatbot::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Light gray track */
+    border-radius: 10px;
+}
+
+#chatbot::-webkit-scrollbar-thumb {
+    background: #007bff; /* Blue thumb */
+    border-radius: 10px;
+}
+
+#chatbot::-webkit-scrollbar-thumb:hover {
+    background: #0056b3; /* Darker blue on hover */
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    #chatbot {
+        height: 70vh; /* Slightly smaller for tablets */
+        padding: 25px;
+    }
+
+    #userInput {
+        width: 95%;
+    }
+
+    #textInput {
+        padding: 12px 18px; /* Slightly smaller padding */
+    }
+
+    #buttonInput {
+        width: 60px; /* Slightly smaller for tablets */
+        height: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    #chatbot {
+        height: 60vh; /* Smaller for mobile */
+        padding: 20px;
+    }
+
+    .botText, .userText {
+        font-size: 1rem; /* Smaller font for mobile */
+        padding: 12px 18px;
+    }
+
+    #textInput {
+        font-size: 1rem; /* Smaller font for mobile */
+    }
+
+    #buttonInput {
+        width: 55px; /* Smaller for mobile */
+        height: 55px;
+    }
+}

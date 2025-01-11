@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Eye Chatbot</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'eyechat/style.css' %}"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Eye Chatbot</h1>
+        <p>Your intelligent assistant for seamless communication.</p>
+    </header>
+
+    <!-- Chatbot Container (Your Existing Code) -->
+    <div id="chatbot">
+        <p class="botText"><span>Hi there! How can I assist you today?</span></p>
+    </div>
+
+    <!-- User Input (Your Existing Code) -->
+    <div id="userInput">
+        <input type="text" id="textInput" name="userMessage" placeholder="Type your message..."/>
+        <input type="submit" value="" id="buttonInput"/>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 Eye Chatbot. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+    function getUserResponse() {
+        var userText = $('#textInput').val(); // Get user input
+        if (userText.trim() === "") return; // Ignore empty messages
+
+        // Create user message HTML
+        var userHTML = "<p class='userText'><span>" + userText + "</span></p>";
+        $('#textInput').val(""); // Clear the input field
+        $('#chatbot').append(userHTML); // Append the user message to the chatbot container
+
+        // Fetch bot response from the server
+        $.get('/eyechat/getResponse', { userMessage: userText }).done(function (data) {
+            // Corrected HTML construction for bot response
+            var returnedMessage = "<p class='botText'><span>" + data + "</span></p>";
+            $('#chatbot').append(returnedMessage); // Append the bot response to the chatbot container
+        });
+    }
+
+    // Add click event listener to the button
+    $('#buttonInput').click(function () {
+        getUserResponse();
+    });
+
+    // Add Enter key functionality
+    $('#textInput').keypress(function (e) {
+        if (e.which === 13) { // 13 is the keycode for Enter
+            getUserResponse();
+        }
+    });
+</script>
+</body>
+</html>
